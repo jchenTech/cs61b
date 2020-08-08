@@ -6,7 +6,7 @@ public class Planet {
 	public double mass;
 	public String imgFileName;
 
-	public static final double G = 6.67e-11;
+	private static final double G = 6.67e-11;
 
 	/** add in two Planet constructors that initialize an instance of Planet class*/
 	public Planet(double xP, double yP, double xV,
@@ -27,15 +27,6 @@ public class Planet {
 		mass = p.mass;
 		imgFileName = p.imgFileName;
 	}
-
-	public Planet(){
-        this.xxPos = 0;
-        this.yyPos = 0;
-        this.xxVel = 0;
-        this.yyVel = 0;
-        this.mass = 0;
-        this.imgFileName = "";
-    }
 
 
 	/**Calculate the distance between two planet */

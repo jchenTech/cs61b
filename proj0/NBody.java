@@ -14,7 +14,7 @@ public class NBody{
 		Planet[] planets = new Planet[N];
 		in.readDouble();
 		for (int j = 0; j < N; j++) {
-			planets[j] = new Planet();
+			planets[j] = new Planet(0, 0, 0, 0, 0, "");
 		}
 		for (int i = 0; i < N; i++) {
 			planets[i].xxPos = in.readDouble();
@@ -26,7 +26,6 @@ public class NBody{
 		}
 		return planets;
 	} 
-
 
 
 	public static void main(String[] args) {
