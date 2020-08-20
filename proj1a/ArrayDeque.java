@@ -3,9 +3,8 @@
  * This is a Array based Doubly Ended Queue Data Structure!!
  * @Rule The starting size of your array should be 8.
  * @Rule Implement all the methods listed above in “The Deque API” section.
- * @Rule The amount of memory that your program uses at any given time must be proportional to the
- * number of items. For arrays of length 16 or more, your usage factor should always be at least 25%.
- * For smaller arrays, your usage factor can be arbitrarily low.
+ * @Rule The amount of memory that at any given time must be proportional to the number
+ * of items. For arrays of length 16 or more, your usage factor should always be at least 25%.
  *
  */
 
@@ -35,8 +34,8 @@ public class ArrayDeque<T> {
     /** Finding the next nextFirst and nextLast index in circle ArrayDeque. */
     private int oneMinus(int index) {
         if (index == 0) { // whether the index is out of bounds!
-            index = capacity-1;
-        }else {
+            index = capacity - 1;
+        } else {
             index -= 1;
         }
         return index;
@@ -45,7 +44,7 @@ public class ArrayDeque<T> {
     private int onePlus(int index) {
         if (index == capacity - 1) { // whether the index is out of bounds!
             index = 0;
-        }else {
+        } else {
             index += 1;
         }
         return index;
@@ -63,7 +62,7 @@ public class ArrayDeque<T> {
             System.arraycopy(items, currentFirst, a, 0, length);
             nextFirst = newCapacity - 1;
             nextLast = length;
-        }else {
+        } else {
             int firstRightCount = capacity - currentFirst;
             int firstLeftCount = capacity - firstRightCount;
             System.arraycopy(items, currentFirst, a, 0, firstRightCount);
@@ -108,7 +107,7 @@ public class ArrayDeque<T> {
 
     /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
         return false;
@@ -121,7 +120,7 @@ public class ArrayDeque<T> {
 
     /** Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
-        if (isEmpty() == true) {
+        if (isEmpty()) {
             return;
         }
         int index = onePlus(nextFirst);
@@ -141,7 +140,7 @@ public class ArrayDeque<T> {
 
     /** Removes and returns the item at the back of the deque. If no such item exists, returns null.
      * @Rule must take constant time, except during resizing operations.
-     * */
+     */
     public T removeFirst() {
         int currentFirst = onePlus(nextFirst);
         T currentFirstItem = items[currentFirst];
@@ -156,7 +155,7 @@ public class ArrayDeque<T> {
 
     /** Removes and returns the item at the back of the deque. If no such item exists, returns null..
      * @Rule must take constant time, except during resizing operations.
-     * */
+     */
     public T removeLast() {
         int currentLast = oneMinus(nextLast);
         T currentLastItem = items[currentLast];
@@ -177,35 +176,12 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        int indexFromFirst = nextFirst + 1 +index;
+        int indexFromFirst = nextFirst + 1 + index;
         if (indexFromFirst >= capacity) {
             indexFromFirst -= capacity;
         }
 
         return items[indexFromFirst];
-    }
-
-    public static void main(String[] args) {
-        ArrayDeque<String> arrDeque =  new ArrayDeque<String>();
-        arrDeque.addLast("a");
-        arrDeque.addLast("b");
-        arrDeque.addFirst("c");
-        arrDeque.addLast("d");
-        arrDeque.addLast("e");
-        arrDeque.addFirst("f");
-        arrDeque.addFirst("g");
-        arrDeque.addFirst("h");
-        arrDeque.addFirst("i");
-        System.out.print(arrDeque.get(6));
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.removeFirst();
-        arrDeque.printDeque();
-        System.out.print(arrDeque.capacity);
     }
 }
 

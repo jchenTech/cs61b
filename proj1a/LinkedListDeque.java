@@ -1,8 +1,9 @@
 /**
  * Created by JianjunChen on 08/16/2020
  * This is a Linked List Doubly ended queue Data Structure using Lists!
- * @Rule The amount of memory that your program uses at any given time must be proportional to the number of items.
- * Do not maintain references to items that are no longer in the deque.
+ * @Rule The amount of memory that your program uses at any given time must be
+ * proportional to the number of items.
+ * @Rule Do not maintain references to items that are no longer in the deque.
  * @Rule Implement all the methods listed above in “The Deque API” section.
  */
 
@@ -10,9 +11,9 @@
 public class LinkedListDeque<T> {
     /**LinkedNode Nested Class*/
     private class LinkedNode {
-        public LinkedNode prev; /* Doubly Linked List*/
-        public T item;
-        public LinkedNode next;
+        private LinkedNode prev; /* Doubly Linked List*/
+        private T item;
+        private LinkedNode next;
 
         public LinkedNode(LinkedNode p, T i, LinkedNode n) {
             prev = p;
@@ -25,8 +26,8 @@ public class LinkedListDeque<T> {
     //private LinkedNode last;
     private int size;
 
-    /* Constructor of LinkedListDeque */
-    public LinkedListDeque () {
+    /** Constructor of LinkedListDeque */
+    public LinkedListDeque() {
         sentinel = new LinkedNode(null, null, null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
@@ -34,7 +35,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    /* Adds an item of type T to the front of the deque.*/
+    /** Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
         LinkedNode first = new LinkedNode(sentinel, item, sentinel.next);
         /* Note that the order cannot be reversed since if we firstly write
@@ -44,7 +45,7 @@ public class LinkedListDeque<T> {
         size += 1;
     }
 
-    /* Adds an item of type T to the back of the deque. */
+    /** Adds an item of type T to the back of the deque. */
     public void addLast(T item) {
         LinkedNode last = new LinkedNode(sentinel.prev, item, sentinel);
         /* Note that the order cannot be reversed!!! */
@@ -53,7 +54,7 @@ public class LinkedListDeque<T> {
         size += 1;
     }
 
-    /* Returns true if deque is empty, false otherwise. */
+    /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
         if (sentinel.next == sentinel) {
             return true;
@@ -61,7 +62,7 @@ public class LinkedListDeque<T> {
         return false;
     }
 
-    /* Returns the number of items in the deque. */
+    /** Returns the number of items in the deque. */
     public int size() {
         return size;
     }
@@ -75,9 +76,10 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /* Removes and returns the item at the front of the deque. If no such item exists, returns null.*/
+    /** Removes and returns the item at the front of the deque.
+    If no such item exists, returns null.*/
     public T removeFirst() {
-        if (isEmpty() == true) {
+        if (isEmpty()) {
             return null;
         }
 
@@ -90,7 +92,8 @@ public class LinkedListDeque<T> {
         return firstItem;
     }
 
-    /* Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the back of the deque.
+     * If no such item exists, returns null. */
     public T removeLast() {
         if (isEmpty() == true) {
             return null;
@@ -106,7 +109,7 @@ public class LinkedListDeque<T> {
 
     }
 
-    /* Gets the item at the given index, where 0 is the front, 1 is the next item,
+    /** Gets the item at the given index, where 0 is the front, 1 is the next item,
     * and so forth. If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (index > size - 1) {
@@ -122,7 +125,7 @@ public class LinkedListDeque<T> {
         return p.item;
     }
 
-    /* Helper method for getRecursive */
+    /** Helper method for getRecursive */
     private T getRecursiveHelper(LinkedNode currentNode, int index) {
         if (index == 0) {
             return currentNode.item;
@@ -130,7 +133,7 @@ public class LinkedListDeque<T> {
         return getRecursiveHelper(currentNode.next, index - 1);
     }
 
-    /*Same as get but using recursion!! */
+    /** Same as get but using recursion!! */
     public T getRecursive(int index) {
         if (index > size - 1) {
             return null;
