@@ -142,6 +142,10 @@ public class ArrayDeque<T> {
      * @Rule must take constant time, except during resizing operations.
      */
     public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
+
         int currentFirst = onePlus(nextFirst);
         T currentFirstItem = items[currentFirst];
         nextFirst = currentFirst;
@@ -153,10 +157,15 @@ public class ArrayDeque<T> {
         return currentFirstItem;
     }
 
-    /** Removes and returns the item at the back of the deque. If no such item exists, returns null..
+    /** Removes and returns the item at the back of the deque. If no such item
+     * exists, returns null..
      * @Rule must take constant time, except during resizing operations.
      */
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
+
         int currentLast = oneMinus(nextLast);
         T currentLastItem = items[currentLast];
         nextLast = currentLast;
@@ -184,4 +193,5 @@ public class ArrayDeque<T> {
         return items[indexFromFirst];
     }
 }
+
 
